@@ -16,4 +16,5 @@ export interface GalleryItem {
   tags: string[];
   height: "sm" | "md" | "lg" | "xl";
   detail: string;
+  artworkId?: string;
 }

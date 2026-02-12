@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import CategoryFilter from "@/components/CategoryFilter";
 import MasonryGrid from "@/components/MasonryGrid";
 import Lightbox from "@/components/Lightbox";
+import ArtworkViewer from "@/components/ArtworkViewer";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
@@ -32,7 +33,14 @@ export default function Home() {
         <MasonryGrid items={filteredItems} onCardClick={setLightboxItem} />
       </main>
       <Footer />
-      {lightboxItem && (
+      {lightboxItem && lightboxItem.artworkId && (
+        <ArtworkViewer
+          artworkId={lightboxItem.artworkId}
+          title={lightboxItem.title}
+          onClose={() => setLightboxItem(null)}
+        />
+      )}
+      {lightboxItem && !lightboxItem.artworkId && (
         <Lightbox
           item={lightboxItem}
           onClose={() => setLightboxItem(null)}

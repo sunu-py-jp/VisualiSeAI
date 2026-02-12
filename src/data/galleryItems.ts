@@ -46,6 +46,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🔍",
     tags: ["Retrieval", "Knowledge", "Grounding"],
     height: "lg",
+    artworkId: "rag",
     detail:
       "Retrieval-Augmented Generation（RAG）は、LLMの回答生成時に外部データベースから関連情報を検索・取得し、その情報をプロンプトに組み込む手法です。ハルシネーション（幻覚）を抑制し、最新情報や専門知識に基づいた正確な回答を生成できます。ベクトルDBとの組み合わせが一般的です。",
   },

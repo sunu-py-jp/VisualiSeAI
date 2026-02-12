@@ -12,8 +12,13 @@ export default function GalleryCard({ item, onClick }: GalleryCardProps) {
       onClick={() => onClick(item)}
     >
       <div
-        className={`glass-card cursor-pointer overflow-hidden card-height-${item.height}`}
+        className={`glass-card cursor-pointer overflow-hidden card-height-${item.height} relative`}
       >
+        {item.artworkId && (
+          <span className="absolute top-3 right-3 z-10 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-white/20 text-white backdrop-blur-sm">
+            3D Interactive
+          </span>
+        )}
         {/* Gradient visual area */}
         <div
           className={`bg-gradient-to-br ${item.gradient} p-6 flex flex-col items-center justify-center`}
