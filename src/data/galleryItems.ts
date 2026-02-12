@@ -10,6 +10,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🧠",
     tags: ["NLP", "Foundation Model", "Text Generation"],
     height: "lg",
+    artworkId: "llm",
     detail:
       "Large Language Models（LLM）は、膨大なテキストデータで学習された大規模なニューラルネットワークです。GPT、Claude、LLaMAなどが代表例で、文章生成、翻訳、要約、コード生成など多様なタスクに対応します。数十億〜数兆のパラメータを持ち、Transformerアーキテクチャをベースに、次のトークンを予測する自己回帰的な学習を行います。",
   },
@@ -22,6 +23,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🎨",
     tags: ["Image Generation", "Denoising", "Generative"],
     height: "md",
+    artworkId: "diffusion",
     detail:
       "Diffusion Modelsは、データにノイズを徐々に加えるプロセスを逆転させることで、高品質な画像を生成するモデルです。DDPM、Score-based Modelsなどの理論に基づき、Stable DiffusionやDALL-E 3に応用されています。GANと比較して学習が安定しており、多様性の高い出力が得られます。",
   },
@@ -34,6 +36,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "⚡",
     tags: ["Attention", "Architecture", "2017"],
     height: "xl",
+    artworkId: "transformer",
     detail:
       "Transformer（2017年「Attention Is All You Need」で提案）は、Self-Attention機構により入力系列の全要素間の関係を並列に計算できるアーキテクチャです。RNNの逐次処理の制約を克服し、GPUでの高速学習を可能にしました。現在のLLM、Vision Transformer、音声認識など、AIの基盤技術となっています。",
   },
@@ -59,6 +62,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🔧",
     tags: ["Transfer Learning", "Adaptation", "SFT"],
     height: "md",
+    artworkId: "finetune",
     detail:
       "Fine-tuningは、大規模な事前学習済みモデルを特定のタスクやドメインに適応させる手法です。全パラメータを更新するFull Fine-tuningの他、LoRAやQLoRAなどのパラメータ効率的手法が登場し、少ないリソースでの適応が可能になりました。SFT（Supervised Fine-Tuning）はRLHFの前段階としても重要です。",
   },
@@ -71,6 +75,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "✍️",
     tags: ["Prompting", "Few-shot", "Optimization"],
     height: "sm",
+    artworkId: "prompt",
     detail:
       "Prompt Engineeringは、AIモデルに与える指示（プロンプト）を工夫することで、望ましい出力を得る技術です。Zero-shot、Few-shot、Chain-of-Thought、Role Playingなどの手法があり、モデルの重みを変更せずに性能を改善できます。",
   },
@@ -83,6 +88,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🤖",
     tags: ["Autonomous", "Tool Use", "Planning"],
     height: "xl",
+    artworkId: "agents",
     detail:
       "AI Agentsは、LLMを中核として外部ツールの利用、計画立案、タスク分解、自律的な実行を行うシステムです。ReAct、AutoGPT、LangChain Agentsなどのフレームワークがあり、ウェブ検索、コード実行、API呼び出しなどを組み合わせて複雑なタスクを解決します。",
   },
@@ -95,6 +101,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "👁️",
     tags: ["Vision", "Audio", "Cross-modal"],
     height: "lg",
+    artworkId: "multimodal",
     detail:
       "Multimodal AIは、テキスト、画像、音声、動画など複数のモダリティを統合的に処理するAIです。GPT-4V、Gemini、Claude 3のように画像理解能力を持つLLMや、テキストから画像/動画を生成するモデルが代表例です。CLIP、Flamingo、LLaVAなどのアーキテクチャが基盤技術となっています。",
   },
@@ -107,6 +114,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "👥",
     tags: ["Alignment", "Reward Model", "PPO"],
     height: "md",
+    artworkId: "rlhf",
     detail:
       "RLHF（Reinforcement Learning from Human Feedback）は、人間の選好データを用いて報酬モデルを学習し、強化学習でLLMを最適化する手法です。ChatGPTの成功の鍵となった技術で、モデルの出力を人間の意図に沿ったものにします。DPO（Direct Preference Optimization）などの改良手法も登場しています。",
   },
@@ -119,6 +127,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🔗",
     tags: ["PEFT", "Low-rank", "Efficient"],
     height: "sm",
+    artworkId: "lora",
     detail:
       "LoRA（Low-Rank Adaptation）は、大規模モデルの重み行列に低ランクの更新行列を追加することで、少ないパラメータで効率的にファインチューニングを行う手法です。元のモデルの重みは固定したまま、追加パラメータのみ学習するため、メモリ使用量を大幅に削減できます。QLoRA、DoRAなどの発展形もあります。",
   },
@@ -131,6 +140,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🎯",
     tags: ["Self-Attention", "Cross-Attention", "KV Cache"],
     height: "lg",
+    artworkId: "attention",
     detail:
       "Attention Mechanismは、入力系列の各要素が他の要素にどれだけ「注意」を払うかを学習する機構です。Query、Key、Valueの3つの変換を用いて重み付き和を計算します。Multi-Head Attention、Flash Attention、Grouped Query Attentionなど多くの改良が提案されています。",
   },
@@ -143,6 +153,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🖼️",
     tags: ["Latent Diffusion", "Open Source", "ComfyUI"],
     height: "md",
+    artworkId: "stablediffusion",
     detail:
       "Stable Diffusionは、Stability AIが公開した潜在拡散モデルです。画像を低次元の潜在空間で処理することで、高品質な画像生成を一般的なGPUで実行可能にしました。テキストからの画像生成、画像編集、ControlNetによる制御など、幅広い応用が可能で、オープンソースコミュニティにより急速に発展しています。",
   },
@@ -155,6 +166,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "📐",
     tags: ["Decoder-only", "Autoregressive", "OpenAI"],
     height: "sm",
+    artworkId: "gpt",
     detail:
       "GPT（Generative Pre-trained Transformer）は、TransformerのDecoder部分のみを使用した自己回帰型言語モデルです。次のトークンを逐次予測する方式で、GPT-1から4oまで、スケーリング則に従って性能が向上してきました。現在のLLMの主流アーキテクチャの一つです。",
   },
@@ -167,6 +179,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🌅",
     tags: ["Text-to-Image", "Inpainting", "ControlNet"],
     height: "lg",
+    artworkId: "imagegen",
     detail:
       "Image Generationは、テキストプロンプトやスケッチなどの条件から画像を生成する技術の総称です。Diffusion Models、GAN、VAEなどのアプローチがあり、DALL-E、Midjourney、Stable Diffusion、Flux等のサービスが普及しています。ControlNet、IP-Adapterなどの制御技術も発展しています。",
   },
@@ -179,6 +192,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "📊",
     tags: ["Embeddings", "Similarity Search", "ANN"],
     height: "md",
+    artworkId: "vectordb",
     detail:
       "Vector Databasesは、テキストや画像をEmbedding（ベクトル表現）に変換し、類似度検索を高速に行うための専用データベースです。Pinecone、Weaviate、Qdrant、ChromaDB、pgvectorなどが代表的で、RAGシステムの知識ストアとして不可欠な存在です。HNSW、IVFなどのインデックス手法を活用します。",
   },
@@ -191,6 +205,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🔤",
     tags: ["BPE", "SentencePiece", "Vocabulary"],
     height: "sm",
+    artworkId: "tokenization",
     detail:
       "Tokenizationは、入力テキストをモデルが処理できるトークン（サブワード単位）に分割する前処理技術です。BPE（Byte Pair Encoding）、WordPiece、SentencePieceなどのアルゴリズムがあり、語彙サイズと表現力のバランスが性能に大きく影響します。日本語などの非ラテン文字の効率的なトークン化も重要な課題です。",
   },
@@ -203,6 +218,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "💭",
     tags: ["Reasoning", "Step-by-step", "CoT"],
     height: "lg",
+    artworkId: "cot",
     detail:
       "Chain-of-Thought（CoT）は、LLMに段階的な推論プロセスを明示させることで、複雑な問題解決能力を向上させる手法です。「Let's think step by step」のようなプロンプトや、推論例の提示により、数学問題や論理的推論の正答率が大幅に向上します。Tree-of-Thought、Graph-of-Thoughtなどの発展形もあります。",
   },
@@ -215,6 +231,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🧪",
     tags: ["Compression", "Teacher-Student", "Efficiency"],
     height: "md",
+    artworkId: "distillation",
     detail:
       "Model Distillation（知識蒸留）は、大規模なTeacherモデルの出力分布を、小規模なStudentモデルに学習させることで、知識を転移する手法です。モデルのサイズを大幅に圧縮しながら性能を維持でき、エッジデバイスへのデプロイやコスト削減に貢献します。",
   },
@@ -227,6 +244,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🎬",
     tags: ["Video Generation", "Temporal", "Sora"],
     height: "xl",
+    artworkId: "texttovideo",
     detail:
       "Text-to-Videoは、テキストプロンプトから動画を生成する技術です。Sora、Runway Gen-3、Pika、Klingなどのモデルが登場し、映像制作の革新が進んでいます。時間的な一貫性の維持、物理法則の理解、長時間動画の生成などが主要な技術的課題です。DiTベースのアーキテクチャが主流になりつつあります。",
   },
@@ -239,6 +257,7 @@ export const galleryItems: GalleryItem[] = [
     emoji: "🏗️",
     tags: ["MoE", "Sparse", "Gating"],
     height: "md",
+    artworkId: "moe",
     detail:
       "Mixture of Experts（MoE）は、複数のエキスパート（専門的なサブネットワーク）からゲーティング機構で一部のみを選択的に活性化するアーキテクチャです。Mixtral、GPT-4（推定）、Switch Transformerなどで採用され、パラメータ数を増やしながら計算コストを抑制できます。スパース活性化により、効率的なスケーリングを実現します。",
   },
