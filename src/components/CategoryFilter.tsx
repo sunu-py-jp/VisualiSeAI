@@ -21,17 +21,19 @@ export default function CategoryFilter({
   onSelect,
 }: CategoryFilterProps) {
   return (
-    <div className="py-6 px-4">
-      <div className="flex justify-center">
-        <div className="filter-scroll flex gap-2 overflow-x-auto pb-2 px-2">
+    <nav className="py-5 px-4 bg-white border-b border-gray-100" aria-label="Category filter">
+      <div className="max-w-[1400px] mx-auto flex justify-center">
+        <div className="filter-scroll flex gap-1 overflow-x-auto pb-1 px-2" role="tablist">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => onSelect(cat)}
-              className={`filter-pill whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium border transition-all ${
+              role="tab"
+              aria-selected={activeCategory === cat}
+              className={`filter-pill whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium transition-all ${
                 activeCategory === cat
-                  ? "filter-pill-active border-transparent"
-                  : "border-white/10 bg-white/5 text-zinc-300 hover:bg-white/10"
+                  ? "filter-pill-active"
+                  : "text-gray-500 bg-transparent hover:text-blue-600 hover:bg-blue-50"
               }`}
             >
               {categoryLabels[cat]}
@@ -39,6 +41,6 @@ export default function CategoryFilter({
           ))}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }

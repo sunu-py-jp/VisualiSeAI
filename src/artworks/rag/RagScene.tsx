@@ -1014,6 +1014,12 @@ export default function RagScene({
   const prevPlayingRef = useRef(false);
   const lastStepRef = useRef(-1);
 
+  // Store callbacks in refs to avoid stale closures in useFrame
+  const onStepChangeRef = useRef(onStepChange);
+  onStepChangeRef.current = onStepChange;
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
+
   useFrame((_, delta) => {
     if (playing && !prevPlayingRef.current) {
       elapsedRef.current = 0;
@@ -1036,11 +1042,11 @@ export default function RagScene({
 
     if (step !== lastStepRef.current && step < TOTAL_STEPS) {
       lastStepRef.current = step;
-      onStepChange(step);
+      onStepChangeRef.current(step);
     }
 
     if (t >= TOTAL_DURATION) {
-      onComplete();
+      onCompleteRef.current();
     }
   });
 

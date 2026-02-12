@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { Category, GalleryItem } from "@/types";
 import { galleryItems, categories } from "@/data/galleryItems";
 import BackgroundDecoration from "@/components/BackgroundDecoration";
@@ -15,13 +15,18 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState<Category>("All");
   const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null);
 
-  const filteredItems =
-    activeCategory === "All"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
+  const filteredItems = useMemo(
+    () =>
+      activeCategory === "All"
+        ? galleryItems
+        : galleryItems.filter((item) => item.category === activeCategory),
+    [activeCategory]
+  );
+
+  const closeLightbox = useCallback(() => setLightboxItem(null), []);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-[#f7f7f7]">
       <BackgroundDecoration />
       <Header />
       <CategoryFilter
@@ -29,7 +34,7 @@ export default function Home() {
         activeCategory={activeCategory}
         onSelect={setActiveCategory}
       />
-      <main className="pb-12">
+      <main className="py-8">
         <MasonryGrid items={filteredItems} onCardClick={setLightboxItem} />
       </main>
       <Footer />
@@ -37,13 +42,13 @@ export default function Home() {
         <ArtworkViewer
           artworkId={lightboxItem.artworkId}
           title={lightboxItem.title}
-          onClose={() => setLightboxItem(null)}
+          onClose={closeLightbox}
         />
       )}
       {lightboxItem && !lightboxItem.artworkId && (
         <Lightbox
           item={lightboxItem}
-          onClose={() => setLightboxItem(null)}
+          onClose={closeLightbox}
         />
       )}
     </div>

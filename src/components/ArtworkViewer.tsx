@@ -61,6 +61,9 @@ export default function ArtworkViewer({
     <div
       className="fixed inset-0 z-50 flex flex-col bg-black/90 backdrop-blur-sm"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
     >
       {/* Header bar */}
       <div

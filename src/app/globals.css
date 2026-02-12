@@ -1,15 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(0.13 0.02 280);
-  --foreground: #ededed;
+  --background: #f7f7f7;
+  --foreground: #333333;
+  --card-bg: #ffffff;
+  --card-border: #e5e5e5;
+  --accent: #4a6cf7;
+  --accent-light: #eef0ff;
+  --text-muted: #888888;
+  --text-secondary: #666666;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card-bg: oklch(0.18 0.02 280 / 0.6);
-  --color-card-border: oklch(0.3 0.02 280 / 0.3);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -17,85 +23,65 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   overflow-x: hidden;
 }
 
-/* Masonry Layout with CSS Columns */
-.masonry {
-  column-count: 4;
-  column-gap: 1rem;
-}
-
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1rem;
+/* Uniform Grid Layout (webdesignclip style) */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
 }
 
 @media (max-width: 1280px) {
-  .masonry {
-    column-count: 3;
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .masonry {
-    column-count: 2;
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  .masonry {
-    column-count: 1;
+  .gallery-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-/* Card heights for masonry effect */
-.card-height-sm {
-  min-height: 220px;
-}
-.card-height-md {
-  min-height: 280px;
-}
-.card-height-lg {
-  min-height: 340px;
-}
-.card-height-xl {
-  min-height: 400px;
+/* Clean card */
+.gallery-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Glassmorphism card */
-.glass-card {
-  background: oklch(0.18 0.02 280 / 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid oklch(0.3 0.02 280 / 0.3);
-  border-radius: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 20px 40px oklch(0 0 0 / 0.4);
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 /* Card entrance animation */
 @keyframes card-enter {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.96);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
 .card-animate {
-  animation: card-enter 0.5s ease-out both;
+  animation: card-enter 0.4s ease-out both;
 }
 
-/* Stagger animation delay */
 .card-animate:nth-child(1) { animation-delay: 0.02s; }
 .card-animate:nth-child(2) { animation-delay: 0.04s; }
 .card-animate:nth-child(3) { animation-delay: 0.06s; }
@@ -117,48 +103,19 @@ body {
 .card-animate:nth-child(19) { animation-delay: 0.38s; }
 .card-animate:nth-child(20) { animation-delay: 0.40s; }
 
-/* Floating blob animation */
-@keyframes blob-float {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-}
-
-.blob {
-  animation: blob-float 20s ease-in-out infinite;
-}
-
-.blob-delay-1 {
-  animation-delay: -5s;
-}
-
-.blob-delay-2 {
-  animation-delay: -10s;
-}
-
-.blob-delay-3 {
-  animation-delay: -15s;
-}
-
-/* Category filter pill */
+/* Category filter */
 .filter-pill {
   transition: all 0.2s ease;
 }
 
 .filter-pill:hover {
-  transform: translateY(-1px);
+  color: var(--accent);
+  background: var(--accent-light);
 }
 
 .filter-pill-active {
-  background: linear-gradient(135deg, oklch(0.6 0.2 300), oklch(0.7 0.15 200));
-  color: white;
-  box-shadow: 0 4px 15px oklch(0.6 0.2 300 / 0.3);
+  background: var(--accent);
+  color: #ffffff;
 }
 
 /* Lightbox overlay */
@@ -167,22 +124,20 @@ body {
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .lightbox-content {
   animation: lightbox-enter 0.3s ease-out;
+  background: #ffffff;
+  border-radius: 12px;
 }
 
 @keyframes lightbox-enter {
   from {
     opacity: 0;
-    transform: scale(0.9) translateY(20px);
+    transform: scale(0.95) translateY(12px);
   }
   to {
     opacity: 1;
@@ -190,30 +145,22 @@ body {
   }
 }
 
-/* Gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, oklch(0.7 0.2 300), oklch(0.8 0.15 200));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: oklch(0.15 0.02 280);
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.3 0.02 280);
-  border-radius: 4px;
+  background: #ccc;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.4 0.02 280);
+  background: #aaa;
 }
 
 /* Filter scroll container */
